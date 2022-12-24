@@ -1,0 +1,35 @@
+.newPostBlock {
+    padding: 5px 21px 5px 13px;
+    border: 2px solid white;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex: 1 0 656px;
+    flex-wrap: wrap;
+    margin-bottom: 13px;
+    line-height: 50px;
+}
+
+.createPostName {
+    height: 40px;
+    width: 59%;
+    flex: 0 1 auto;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+}
+
+.addPost {
+    background-color: rgba(56, 56, 180, 0.758);
+    border-radius: 20px;
+    width: 20%;
+    height: 45px;
+    border: none;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    flex: 0 0 131px;
+}

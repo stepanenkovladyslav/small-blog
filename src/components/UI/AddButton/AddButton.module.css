@@ -1,0 +1,12 @@
+.addButton {
+    background-color: #67D794;
+    height: 2em;
+    width: 9.6em;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    -webkit-transform: rotate(7.95deg);
+    margin-bottom: 50px;
+    cursor: pointer;
+}

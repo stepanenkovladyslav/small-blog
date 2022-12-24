@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: -7%;
+}
+.error {
+    font-size: 400px;
+}
+
+.getBack {
+    color: white;
+}
+
+.getBack a {
+    color: rgba(227, 227, 227, 0.849);
+}
