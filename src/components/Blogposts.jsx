@@ -9,6 +9,9 @@ const Blogposts = (props) => {
     <ul className='blogposts-list'>
       <CreatePostBlock display={props.display} createNewPost={props.createNewPost} />
         {
+          props.blogposts.length == 0 && props.loading == false ? 
+          <h1>post deleted</h1>
+          :
           props.blogposts.map((blogpost, index)=> {
             return <Blogpost blogpost={blogpost} index={index} deleteBlogpost={props.deleteBlogpost} key={index} />
           })

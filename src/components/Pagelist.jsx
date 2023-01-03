@@ -1,12 +1,8 @@
 import React from 'react'
-import PostAPI from '../API/PostAPI';
+
 
 function getPages (props) {
-    let pages =[];
-    for(let i = 1; i <= props.numberofpages; i++) {
-        pages.push(<li className='page' key={i}><a href='#' onClick={()=>props.changePage(i)}>{i}</a></li>)
-    } 
-    return pages
+    return props.numberofpages.map(page => { return <li className='page' key={page}><button onClick={()=>props.changePage(page)}>{page}</button></li>})
 }
 
 const Pagelist = (props) => {

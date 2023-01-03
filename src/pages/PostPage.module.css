@@ -31,9 +31,10 @@ min-height: 10rem;
 
 .commentSection {
     background-color:#5a5a5a;
+    color: white;
     display: flex;
     width: 100%;
-    padding: 0px 50px;
+    padding: 20px 50px;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -41,7 +42,7 @@ min-height: 10rem;
 
 .commentInput {
     margin-top: 10px;
-    width: 80%;
+    width: 50%;
     min-height: 5rem;
     background-color: white;
     color: black;
@@ -60,5 +61,5 @@ min-height: 10rem;
 
 .commentList {
     list-style-type: none;
-    max-width: 100%;
+    max-width: 50%;
 }

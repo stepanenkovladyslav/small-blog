@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
+import { usePagination } from "../hooks/usePagination";
 import PostAPI from "../API/PostAPI";
 import MainContent from "../components/MainContent";
 import { usePosts } from "../hooks/usePosts";
 import img from '../imageforrightside.png'
+import { useRequest } from "../hooks/useRequest";
 
 function BlogpostsPage () {
 
@@ -12,6 +14,7 @@ function BlogpostsPage () {
   const [activeSort,setActiveSort] = useState(false);
   const [numberOfPosts, setNumberOfPosts] = useState();
   const [page, setPage] = useState(1);
+  const [limitPostsPerPage, setLimitPostsPerPage] = useState(5);
   /*
     const [controllerPosts,setControllerPosts] = useState({initialBlogPosts:[],blogPosts:[]})
     const [controllerSortSearch, setControllerSortSearch] = useState({searchText:'',activeSort:false}) 
@@ -22,20 +25,20 @@ function BlogpostsPage () {
 
   const posts = usePosts(blogposts,searchText,activeSort);
 
-  async function load(page = 1) {
-    try {
-        const [postsForPage, postsCount] = await PostAPI.getAllPostsForPage(
-            page
-        );
-        setBlogposts(postsForPage);
-        setNumberOfPosts(+postsCount);
-    } catch (e) {
-        console.error(e);
+  const [request, loading, error] = useRequest(
+    async (page = 1) => {
+      console.log(page)
+      const [postsForPage, postsCount] = await PostAPI.getAllPostsForPage(page, limitPostsPerPage);
+      setBlogposts(postsForPage);
+      setNumberOfPosts(+postsCount);
     }
-}
+  )
 useEffect(() => {
-    load(page);
-}, [page]);
+    request(page);
+}, [page, limitPostsPerPage]);
+
+
+  const numberOfPages = usePagination(numberOfPosts, limitPostsPerPage);
 
   function changeActiveSort () {
     setActiveSort(activeSort ? false : true)
@@ -55,21 +58,21 @@ useEffect(() => {
     getAllPosts()
   }, [])
 
-  const numberOfPages = useMemo(()=> {
-    return numberOfPosts/blogposts.length;
-  }, [numberOfPosts, blogposts]);
+  // const numberOfPages = useMemo(()=> {
+  //   return numberOfPosts/blogposts.length;
+  // }, [numberOfPosts, blogposts]);
 
 
 // Creating new post
-  const [display, setDisplay] = useState("none");
+  const [activeModal, setActiveModal] = useState(false);
 
   function makeVisible () {
-      setDisplay("flex") 
+      setActiveModal(true) 
   }
 
   function createNewPost (inputValue) {
     const newpost = {title: inputValue, id: 7};
-    setDisplay("none");
+    setActiveModal(false);
     
     setBlogposts(previousState => {
         return [newpost, ...previousState]
@@ -80,6 +83,7 @@ useEffect(() => {
   //Delete blogpost 
   function deleteBlogpost (index) {
       setBlogposts(blogposts.filter((post, idx)=> {if (idx !== index){ return post}}))
+      setNumberOfPosts(numberOfPosts - 1)
     }
 
     function changeSearch (value) {
@@ -88,7 +92,7 @@ useEffect(() => {
 
 
   return <>
-    <MainContent blogposts={posts} numberOfPages={numberOfPages} rightImage={img} display={display} makeVisible={makeVisible} createNewPost={createNewPost} deleteBlogpost={deleteBlogpost} changePage={changePage} searchText={searchText} changeSearch={changeSearch} changeActiveSort={changeActiveSort}/>
+    <MainContent blogposts={posts} numberOfPages={numberOfPages} rightImage={img} display={activeModal} makeVisible={makeVisible} createNewPost={createNewPost} deleteBlogpost={deleteBlogpost} changePage={changePage} searchText={searchText} changeSearch={changeSearch} changeActiveSort={changeActiveSort} loading={loading}/>
     </>
   
 }

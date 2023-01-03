@@ -7,7 +7,7 @@ const LeftSide = (props) => {
   return (
     <div className='left-side'>
         <SearchSort sort={props.sort} blogposts={props.blogposts} search={props.search} change={props.change} searchText={props.searchText} changeSearch={props.changeSearch} changeActiveSort={props.changeActiveSort}/>
-        <Blogposts blogposts={props.blogposts} display={props.display} createNewPost={props.createNewPost} deleteBlogpost={props.deleteBlogpost}/>
+        <Blogposts blogposts={props.blogposts} display={props.display} createNewPost={props.createNewPost} deleteBlogpost={props.deleteBlogpost} loading={props.loading}/>
         <Pagelist numberofpages={props.pages} changePage={props.changePage}/>
     </div>
   )

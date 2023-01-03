@@ -1,13 +1,13 @@
 import axios from "axios";
 
 class PostAPI {
-    static async getAllPostsForPage(page) {
+    static async getAllPostsForPage(page, limit) {
         const pageNumber = page;
         const resp = await axios.get(
             "https://jsonplaceholder.typicode.com/posts",
             {
                 params: {
-                    _limit: 5,
+                    _limit: limit,
                     _page: pageNumber,
                 },
             }
