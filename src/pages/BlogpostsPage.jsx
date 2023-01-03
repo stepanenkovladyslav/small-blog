@@ -9,7 +9,6 @@ import { useRequest } from "../hooks/useRequest";
 function BlogpostsPage () {
 
   const [blogposts,setBlogposts] = useState([]);
-  const [initialBlogposts, setInitialBlogposts] = useState([]);
   const [searchText, setSearchText] = useState('') 
   const [activeSort,setActiveSort] = useState(false);
   const [numberOfPosts, setNumberOfPosts] = useState();
@@ -31,27 +30,33 @@ function BlogpostsPage () {
   }, [page, limitPostsPerPage]);
 
 
+
   const numberOfPages = usePagination(page, numberOfPosts, limitPostsPerPage);
 
   function changeActiveSort () {
     setActiveSort(activeSort ? false : true)
   }  
 
-  function changePage(page) {
-    setPage(page);
+  function changePage(newPage) {
+    console.log(newPage)
+    if (newPage > 0 && newPage <= Math.round(numberOfPosts/limitPostsPerPage)) {
+      setPage(newPage);
+    } else {
+      return page
+    }
+    
 }
 
 // Creating new post
   const [activeModal, setActiveModal] = useState(false);
 
   function makeVisible () {
-      setActiveModal(true) 
+      setActiveModal(true); 
   }
 
   function createNewPost (inputValue) {
     const newpost = {title: inputValue, id: 7};
     setActiveModal(false);
-    
     setBlogposts(previousState => {
         return [newpost, ...previousState]
     });
@@ -70,7 +75,7 @@ function BlogpostsPage () {
 
 
   return <>
-    <MainContent blogposts={posts} numberOfPages={numberOfPages} rightImage={img} display={activeModal} makeVisible={makeVisible} createNewPost={createNewPost} deleteBlogpost={deleteBlogpost} changePage={changePage} searchText={searchText} changeSearch={changeSearch} changeActiveSort={changeActiveSort} loading={loading}/>
+    <MainContent blogposts={posts} numberOfPages={numberOfPages} rightImage={img} display={activeModal} makeVisible={makeVisible} createNewPost={createNewPost} deleteBlogpost={deleteBlogpost} changePage={changePage} searchText={searchText} changeSearch={changeSearch} changeActiveSort={changeActiveSort} loading={loading} page={page}/>
     </>
   
 }

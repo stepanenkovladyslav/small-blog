@@ -34,21 +34,26 @@ const PostPage = () => {
   async function getComments (params, limit, page) {
       const [pageComments, allComments] = await CommentAPI.getComments(params.id, limit, page);
       setComments(pageComments);
-      setCommentCount(allComments);
+      setCommentCount(+allComments);
   }
   useEffect(()=> {
     getComments(params,limitCommPerPage, commentPage)
   },[commentPage])
 
   function changePage (page) {
+    console.log(page, commentCount, limitCommPerPage)
+    if (page > 0 && page <= Math.round(commentCount/limitCommPerPage)) {
     setCommentPage(page);
+    } else {
+      return commentPage;
+    }
   }
   const numberOfPages = usePagination(commentPage, commentCount, limitCommPerPage)
  
   return (
     <div className={style.postContainer}>
         <Post post={post}/>
-        <PostCommentList comments={comments} numberofpages={numberOfPages} changePage={changePage}/>
+        <PostCommentList comments={comments} numberofpages={numberOfPages} changePage={changePage} page={commentPage}/>
     </div>
   )
   }

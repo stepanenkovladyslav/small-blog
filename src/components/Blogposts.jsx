@@ -7,7 +7,7 @@ import CreatePostBlock from './UI/CreatePostBlock/CreatePostBlock'
 const Blogposts = (props) => {
   return (
     <ul className='blogposts-list'>
-      <CreatePostBlock display={props.display} createNewPost={props.createNewPost} />
+      <CreatePostBlock display={props.display} createNewPost={props.createNewPost}/>
         {
           props.blogposts.length == 0 && props.loading == false ? 
           <h1>post deleted</h1>

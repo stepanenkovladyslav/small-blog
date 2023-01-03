@@ -3,7 +3,7 @@ import PostComment from './UI/PostComment/PostComment'
 import style from '../pages/PostPage.module.css'
 import Pagelist from './Pagelist'
 
-  function getComments (comments, numberofpages, changePage) {
+  function getComments (comments, numberofpages, changePage, commentPage) {
     if (comments) {
       return (
         <>
@@ -17,7 +17,7 @@ import Pagelist from './Pagelist'
               return <PostComment title={comment.name} email={comment.email} body={comment.body} key={comment.id}/>
             })
           }
-          <Pagelist numberofpages={numberofpages} changePage={changePage} />
+          <Pagelist numberofpages={numberofpages} changePage={changePage} page={commentPage}/>
           </ul>
           </div>
       </>
@@ -26,9 +26,10 @@ import Pagelist from './Pagelist'
   }
 
 
-const PostCommentList = ({comments, numberofpages, changePage}) => {
+const PostCommentList = ({comments, numberofpages, changePage, page}) => {
+  console.log()
   return (
-    getComments(comments, numberofpages, changePage)
+    getComments(comments, numberofpages, changePage, page)
   )
 }
 
