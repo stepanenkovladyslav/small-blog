@@ -1,8 +1,8 @@
 import React from 'react'
 
-
+  
 function getPages (props) {
-    return props.numberofpages.map(page => { return <li className='page' key={page}><button onClick={()=>props.changePage(page)}>{page}</button></li>})
+    return props.numberofpages.map(page => { return <li className="page" key={page}><button onClick={()=>props.changePage(page)}>{page}</button></li>})
 }
 
 const Pagelist = (props) => {

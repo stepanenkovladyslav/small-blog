@@ -15,53 +15,31 @@ function BlogpostsPage () {
   const [numberOfPosts, setNumberOfPosts] = useState();
   const [page, setPage] = useState(1);
   const [limitPostsPerPage, setLimitPostsPerPage] = useState(5);
-  /*
-    const [controllerPosts,setControllerPosts] = useState({initialBlogPosts:[],blogPosts:[]})
-    const [controllerSortSearch, setControllerSortSearch] = useState({searchText:'',activeSort:false}) 
 
-    value = controllerSortSeatch.searchText
-
-  */
 
   const posts = usePosts(blogposts,searchText,activeSort);
 
   const [request, loading, error] = useRequest(
     async (page = 1) => {
-      console.log(page)
       const [postsForPage, postsCount] = await PostAPI.getAllPostsForPage(page, limitPostsPerPage);
       setBlogposts(postsForPage);
       setNumberOfPosts(+postsCount);
     }
   )
-useEffect(() => {
-    request(page);
-}, [page, limitPostsPerPage]);
+  useEffect(() => {
+      request(page);
+  }, [page, limitPostsPerPage]);
 
 
-  const numberOfPages = usePagination(numberOfPosts, limitPostsPerPage);
+  const numberOfPages = usePagination(page, numberOfPosts, limitPostsPerPage);
 
   function changeActiveSort () {
     setActiveSort(activeSort ? false : true)
-    //setControlllerSortSeatch({...controllerSortSearch, activeSort: activeSort ? false: true })
   }  
 
   function changePage(page) {
     setPage(page);
 }
-
-
-  useEffect(()=> {
-    async function getAllPosts (){
-      const data = await PostAPI.getAllPosts();
-      setInitialBlogposts(data);
-    }
-    getAllPosts()
-  }, [])
-
-  // const numberOfPages = useMemo(()=> {
-  //   return numberOfPosts/blogposts.length;
-  // }, [numberOfPosts, blogposts]);
-
 
 // Creating new post
   const [activeModal, setActiveModal] = useState(false);

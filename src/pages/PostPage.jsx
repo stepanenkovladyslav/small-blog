@@ -43,7 +43,7 @@ const PostPage = () => {
   function changePage (page) {
     setCommentPage(page);
   }
-  const numberOfPages = usePagination(commentCount, limitCommPerPage)
+  const numberOfPages = usePagination(commentPage, commentCount, limitCommPerPage)
  
   return (
     <div className={style.postContainer}>

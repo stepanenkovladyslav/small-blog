@@ -2,24 +2,35 @@ import { useEffect, useState } from "react";
 import PostAPI from "../API/PostAPI";
 import CommentAPI from "../API/CommentAPI";
 
-export const usePagination = (numberOfPosts, limit) => {
-    const numberOfPages = Math.ceil(numberOfPosts / limit);
+export const usePagination = (page, numberOfPosts, limit) => {
+    const numberOfPages = Math.round(numberOfPosts / limit);
+    let pageArr = [];
 
-    const pageArr = [];
-
-    const addPage = (numberOfPages) => {
-        for (let i = 0; i <= numberOfPages - 1; i++) {
-            pageArr.push(numberOfPages - i);
+    const addPage = (page, numberOfPages) => {
+        if (page >= 2 && page <= numberOfPages - 1) {
+            for (let i = page - 2; i <= page + 2; i++) {
+                if (i <= numberOfPages && i > 0) {
+                    pageArr.push(i);
+                }
+            }
+        } else if (page <= 2) {
+            for (let i = page; i <= page + 2; i++) {
+                pageArr.push(i);
+            }
+        } else if (page == numberOfPages) {
+            for (let i = page; i >= numberOfPages - 2; i--) {
+                pageArr.push(i);
+                pageArr = pageArr.sort((a, b) => (a > b ? 1 : -1));
+            }
         }
     };
-    addPage(numberOfPages);
-    /*
-        totalPages = 100
-        limit = 10
-        currentPage = 3
-
-        [1,2,3,4,5,6,7,8,9,10]
-        [3,4,5]
-    */
-    return pageArr.reverse();
+    addPage(page, numberOfPages);
+    return pageArr;
 };
+
+/* To display all pages
+    for (let i = 0; i <= numberOfPages - 1; i++) {
+                pageArr.push(numberOfPages - i);
+            }
+        };
+        */
