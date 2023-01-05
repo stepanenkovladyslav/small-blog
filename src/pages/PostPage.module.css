@@ -50,6 +50,13 @@ min-height: 10rem;
     border-radius: 5px;
 }
 
+.commentHeading {
+    color: white;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+}
+
 .commentSubmit {
     margin-top: 10px;
     height: 2rem;
@@ -62,4 +69,14 @@ min-height: 10rem;
 .commentList {
     list-style-type: none;
     max-width: 50%;
+    margin: 0 auto;
+}
+
+.noComments {
+    margin: 10rem 0rem;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-import PostAPI from "../API/PostAPI";
-import CommentAPI from "../API/CommentAPI";
-
 export const usePagination = (page, numberOfPosts, limit) => {
     const numberOfPages = Math.round(numberOfPosts / limit);
     let pageArr = [];

@@ -13,12 +13,3 @@ const MainMenu = () => {
 }
 
 export default MainMenu
-
-
-/*
-
-<Header>
-  img 
-  <ListLinks>
-  
-*/

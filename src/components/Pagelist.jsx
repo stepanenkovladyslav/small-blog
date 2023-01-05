@@ -9,7 +9,7 @@ const Pagelist = (props) => {
   }
 
   function getPages (props) {
-    return props.numberofpages.map(page => { return <li className="page" key={page}><button className={classes(props, page)}onClick={()=>props.changePage(page)}>{page}</button></li>})
+    return props.numberofpages.map(page => { return <li className="page" key={page}><button className={classes(props, page)} onClick={()=>props.changePage(page)}>{page}</button></li>})
 }
 
   return (

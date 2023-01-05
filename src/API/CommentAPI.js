@@ -12,8 +12,8 @@ class CommentAPI {
             }
         );
         const data = await resp.data;
-        const allComments = resp.headers["x-total-count"];
-        return [data, allComments];
+        const allCommentsCount = resp.headers["x-total-count"];
+        return [data, allCommentsCount];
     }
 }
 

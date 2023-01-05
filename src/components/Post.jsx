@@ -9,7 +9,6 @@ import style from '../pages/PostPage.module.css'
                     <p className={style.postBody}>{props.post.body}</p>  
                 </div>
             )
-        
         }
     }
 

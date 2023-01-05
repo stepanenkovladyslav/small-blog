@@ -29,6 +29,11 @@ function BlogpostsPage () {
       request(page);
   }, [page, limitPostsPerPage]);
 
+  function closeModal (classes, e) {
+    if (classes.includes("active") && e.target.className.includes("newPostBlock")) {
+      setActiveModal(false)
+    }
+  }
 
 
   const numberOfPages = usePagination(page, numberOfPosts, limitPostsPerPage);
@@ -38,13 +43,11 @@ function BlogpostsPage () {
   }  
 
   function changePage(newPage) {
-    console.log(newPage)
     if (newPage > 0 && newPage <= Math.round(numberOfPosts/limitPostsPerPage)) {
       setPage(newPage);
     } else {
       return page
     }
-    
 }
 
 // Creating new post
@@ -75,7 +78,7 @@ function BlogpostsPage () {
 
 
   return <>
-    <MainContent blogposts={posts} numberOfPages={numberOfPages} rightImage={img} display={activeModal} makeVisible={makeVisible} createNewPost={createNewPost} deleteBlogpost={deleteBlogpost} changePage={changePage} searchText={searchText} changeSearch={changeSearch} changeActiveSort={changeActiveSort} loading={loading} page={page}/>
+    <MainContent blogposts={posts} numberOfPages={numberOfPages} rightImage={img} display={activeModal} makeVisible={makeVisible} createNewPost={createNewPost} deleteBlogpost={deleteBlogpost} changePage={changePage} searchText={searchText} changeSearch={changeSearch} changeActiveSort={changeActiveSort} loading={loading} page={page} closeModal={closeModal}/>
     </>
   
 }
