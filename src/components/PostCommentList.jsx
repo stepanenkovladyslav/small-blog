@@ -4,10 +4,11 @@ import style from '../pages/PostPage/PostPage.module.css'
 import Pagelist from './Pagelist'
 import CommentSection from './CommentSection'
 
-  function getComments (comments, numberofpages, changePage, commentPage) {
+  function getComments (comments, setComments, numberofpages, changePage, commentPage) {
+    console.log(setComments)
       return (
         <>
-        <CommentSection/>
+        <CommentSection comments={comments} setComments={setComments}/>
         {comments.length > 0 ? 
         <>
         <h2 className={style.commentHeading}>Comment Section</h2> 
@@ -31,9 +32,9 @@ import CommentSection from './CommentSection'
 
 
 
-const PostCommentList = ({comments, numberofpages, changePage, page}) => {
+const PostCommentList = ({comments, setComments, numberofpages, changePage, page}) => {
   return (
-      getComments(comments, numberofpages, changePage, page) 
+      getComments(comments, setComments, numberofpages, changePage, page) 
   )
 }
 

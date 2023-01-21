@@ -53,7 +53,7 @@ const PostPage = () => {
   return (
     <div className={style.postContainer}>
         <Post post={post}/>
-        <PostCommentList comments={comments} numberofpages={numberOfPages} changePage={changePage} page={commentPage}/>
+        <PostCommentList comments={comments} setComments={setComments} numberofpages={numberOfPages} changePage={changePage} page={commentPage}/>
     </div>
   )
   }
