@@ -1,5 +1,5 @@
 export const usePagination = (page, numberOfPosts, limit) => {
-    const numberOfPages = Math.round(numberOfPosts / limit);
+    const numberOfPages = Math.ceil(numberOfPosts / limit);
     let pageArr = [];
 
     const addPage = (page, numberOfPages) => {
@@ -14,6 +14,7 @@ export const usePagination = (page, numberOfPosts, limit) => {
                 pageArr.push(i);
             }
         } else if (page == numberOfPages) {
+            console.log(numberOfPosts);
             for (let i = page; i >= numberOfPages - 2; i--) {
                 pageArr.push(i);
                 pageArr = pageArr.sort((a, b) => (a > b ? 1 : -1));

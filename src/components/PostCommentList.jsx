@@ -1,6 +1,6 @@
 import React from 'react'
 import PostComment from './UI/PostComment/PostComment'
-import style from '../pages/PostPage.module.css'
+import style from '../pages/PostPage/PostPage.module.css'
 import Pagelist from './Pagelist'
 import CommentSection from './CommentSection'
 

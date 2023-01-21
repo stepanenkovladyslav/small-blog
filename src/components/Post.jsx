@@ -1,5 +1,5 @@
 import React from 'react'
-import style from '../pages/PostPage.module.css'
+import style from '../pages/PostPage/PostPage.module.css'
 
     function getPost (props) {
             if (props.post) {

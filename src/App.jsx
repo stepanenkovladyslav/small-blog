@@ -5,8 +5,8 @@ import Layout from "./components/Layout"
 import BlogpostsPage from "./pages/BlogpostsPage"
 import InformationPage from "./pages/InformationPage"
 import ReviewsPage from "./pages/ReviewsPage"
-import PostPage from "./pages/PostPage";
-import ErrorPage from "./pages/ErrorPage";
+import PostPage from "./pages/PostPage/PostPage";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 function App() {
   return (

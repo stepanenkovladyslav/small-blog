@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import PostCommentList from '../components/PostCommentList';
-import Post from '../components/Post';
-import PostAPI from "../API/PostAPI";
-import CommentAPI from '../API/CommentAPI';
-import { usePagination } from '../hooks/usePagination';
+import PostCommentList from '../../components/PostCommentList';
+import Post from '../../components/Post';
+import PostAPI from "../../API/PostAPI";
+import CommentAPI from '../../API/CommentAPI';
+import { usePagination } from '../../hooks/usePagination';
 import style from './PostPage.module.css'
 
 const PostPage = () => {

@@ -37,7 +37,6 @@ function BlogpostsPage () {
 
 
   const numberOfPages = usePagination(page, numberOfPosts, limitPostsPerPage);
-
   function changeActiveSort () {
     setActiveSort(activeSort ? false : true)
   }  
