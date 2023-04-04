@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/small-blog/static/css/main.456cf51b.css",
+    "main.js": "/small-blog/static/js/main.6ebf0345.js",
+    "static/media/imageforrightside.png": "/small-blog/static/media/imageforrightside.60b7174e50e34086ad6d.png",
+    "static/media/Mask-group.png": "/small-blog/static/media/Mask-group.7486848f3c93b2a6e62d.png",
+    "index.html": "/small-blog/index.html",
+    "main.456cf51b.css.map": "/small-blog/static/css/main.456cf51b.css.map",
+    "main.6ebf0345.js.map": "/small-blog/static/js/main.6ebf0345.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.456cf51b.css",
+    "static/js/main.6ebf0345.js"
+  ]
+}
